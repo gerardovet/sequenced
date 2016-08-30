@@ -45,7 +45,7 @@ module Sequenced
           mattr_accessor :sequenced_options, instance_accessor: false
           self.sequenced_options = []
 
-          before_save :set_sequential_ids
+          after_validation :set_sequential_ids, prepend: true
         end
 
         options = DEFAULT_OPTIONS.merge(options)
